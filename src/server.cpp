@@ -9,7 +9,7 @@
 
 using namespace std;
 
-std::pair<string, string> getHostAndPort(const sockaddr *addr) {
+pair<string, string> getHostAndPort(const sockaddr *addr) {
     char host[NI_MAXHOST];
     char port[NI_MAXSERV];
     // maybe sockaddr_storage is better? that's what copilot suggested
@@ -101,7 +101,5 @@ int main() {
     close(sockFd);
 
     freeaddrinfo(result);
-
-    println("hello {}", "world");
     return 0;
 }

@@ -68,7 +68,7 @@ int main() {
 
     sockaddr_storage clientAddr;
     socklen_t clientAddrLen = sizeof(clientAddr);
-    do {
+    while (true) {
         int clientFd = accept(sockFd, (sockaddr *)&clientAddr, &clientAddrLen);
         if (clientFd == -1) {
             println("accept failed: <{}>", strerror(errno));
@@ -97,7 +97,7 @@ int main() {
 
         close(clientFd);
         println("closed connection to {}:{}", clientHost, clientPort);
-    } while (true);
+    } 
     close(sockFd);
 
     freeaddrinfo(result);

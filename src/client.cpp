@@ -1,10 +1,9 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netdb.h>
+#include <unistd.h>
 
 #include <iostream>
-#include <print>
-#include <format>
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -47,7 +46,7 @@ int main(int argc, char* argv[]) {
 
     while (true) {
         std::string message;
-        std::println("Please enter message:");
+        std::cout << "Please enter message: ";
         std::getline(std::cin, message);
 
         if (message == "exit") {
@@ -64,7 +63,7 @@ int main(int argc, char* argv[]) {
         std::cout << "Sent " << sendResult << " bytes" << std::endl;
     }
 
-    std::println("Closing connection");
+    std::cout << "Closing connection" << std::endl;
     close(sockFd);
     freeaddrinfo(result);
 

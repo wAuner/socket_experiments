@@ -43,7 +43,6 @@ int main() {
         return -1;
     }
 
-    // just use the first result
     const auto [host, portString] = getHostAndPort(result->ai_addr);
     int sockFd =
         socket(result->ai_family, result->ai_socktype, result->ai_protocol);

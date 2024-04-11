@@ -73,9 +73,9 @@ int main() {
         cout << "accepted connection from " << clientHost << ":" << clientPort
              << endl;
 
-        std::vector<char> buffer(1024);
         int bytesReceived;
         while (true) {
+            std::vector<char> buffer(1024);
             bytesReceived = recv(clientFd, buffer.data(), buffer.size(), 0);
             if (bytesReceived == -1) {
                 perror("recv failed");

@@ -78,9 +78,9 @@ int main() {
             getHostAndPort((sockaddr *)&clientAddr);
         println("accepted connection from {}:{}", clientHost, clientPort);
 
-        std::vector<char> buffer(1024);
         int bytesReceived;
         while (true) {
+            vector<char> buffer(1024);
             bytesReceived = recv(clientFd, buffer.data(), buffer.size(), 0);
             if (bytesReceived == -1) {
                 println("recv failed: <{}>", strerror(errno));
@@ -92,7 +92,6 @@ int main() {
                 println("client closed connection");
                 break;
             }
-            buffer.clear();
         } 
 
         close(clientFd);
